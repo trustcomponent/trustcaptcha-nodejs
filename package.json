@@ -1,0 +1,50 @@
+{
+  "name": "@trustcomponent/trustcaptcha-nodejs",
+  "version": "1.0.0",
+  "description": "TrustCaptcha – Privacy-first CAPTCHA solution for Node.js and TypeScript. GDPR-compliant, bot protection made in Europe.",
+  "keywords": [
+    "captcha",
+    "anti-spam",
+    "spam-protection",
+    "bot-protection",
+    "bot-detection",
+    "user-verification",
+    "nodejs",
+    "typescript",
+    "privacy",
+    "gdpr",
+    "europe",
+    "trustcaptcha",
+    "captcha-service",
+    "made-in-europe"
+  ],
+  "author": "TrustComponent (mail@trustcomponent.com)",
+  "license": "Apache-2.0",
+  "homepage": "https://www.trustcomponent.com/en/products/captcha/integrations/nodejs-captcha",
+  "repository": "https://github.com/trustcomponent/trustcaptcha-nodejs",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "test": "jest --config jest.config.js"
+  },
+  "devDependencies": {
+    "@types/jest": "^29.5.14",
+    "@types/node": "^20.8.10",
+    "@types/uuid": "^9.0.8",
+    "jest": "^29.7.0",
+    "ts-jest": "^29.2.5",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.2.2"
+  },
+  "dependencies": {
+    "axios": "^1.6.0",
+    "uuid": "^11.0.3"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
