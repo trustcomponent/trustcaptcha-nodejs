@@ -7,7 +7,7 @@ export class CaptchaManager {
     static async getVerificationResult(secretKey: string, base64verificationToken: string): Promise<VerificationResult> {
 
         const verificationToken = VerificationToken.fromBase64(base64verificationToken);
-        const url = `${verificationToken.apiEndpoint}/verifications/${verificationToken.verificationId}/assessments`;
+        const url = `https://api.trustcomponent.com/verifications/${verificationToken.verificationId}/assessments`;
         const headers = {
             "tc-authorization": secretKey,
             "tc-library-language": "nodejs",
@@ -15,7 +15,11 @@ export class CaptchaManager {
         };
 
         try {
-            const response = await axios.get(url, { headers });
+            const response = await axios.get(url, {
+                headers,
+                timeout: 5000,
+                maxRedirects: 0,
+            });
             return VerificationResult.fromObject(response.data);
         } catch (error: any) {
             if (error.response && error.response.status === 403) {
