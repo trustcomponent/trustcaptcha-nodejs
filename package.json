@@ -1,6 +1,6 @@
 {
   "name": "@trustcomponent/trustcaptcha-nodejs",
-  "version": "1.0.0",
+  "version": "3.0.0",
   "description": "TrustCaptcha – Privacy-first CAPTCHA solution for Node.js and TypeScript. GDPR-compliant, bot protection made in Europe.",
   "keywords": [
     "captcha",

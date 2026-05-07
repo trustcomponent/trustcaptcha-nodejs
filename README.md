@@ -32,15 +32,17 @@ Need a walkthrough? See the [Node.js integration guide](https://www.trustcompone
 
 1. Install the dependency
 ```bash
-npm i @trustcomponent/trustcaptcha-nodejs
+npm i @trustcomponent/trustcaptcha-nodejs@^3.0.0
 ```
 
 2. Retrieve the verification result
 ```typescript
+import { TrustCaptcha } from "@trustcomponent/trustcaptcha-nodejs";
+
 // Retrieving the verification result
 let verificationResult;
 try {
-  verificationResult = await CaptchaManager.getVerificationResult("<your_secret_key>", "<verification_token_from_your_client>");
+  verificationResult = await TrustCaptcha.getVerificationResult("<your_api_key>", "<verification_token_from_your_client>");
 } catch (error) {
   // Fetch verification result failed - handle error
 }

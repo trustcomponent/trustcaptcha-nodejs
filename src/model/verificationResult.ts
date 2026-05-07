@@ -3,70 +3,73 @@ import { validate as uuidValidate } from 'uuid';
 export class VerificationResult {
     captchaId: string;
     verificationId: string;
+    verificationPassed: boolean;
     score: number;
-    reason: string;
-    mode: string
+    decisionType: string;
+    decisionAction: string;
+    gatewayFailoverActive: boolean;
+    riskScoringEnabled: boolean;
+    minimalDataModeEnabled: boolean;
     origin: string;
     ipAddress: string;
+    countryCode: string;
     deviceFamily: string;
     operatingSystem: string;
     browser: string;
-    creationTimestamp: string;
-    releaseTimestamp: string;
-    retrievalTimestamp: string;
-    verificationPassed: boolean;
+    verificationStartedAt: string;
+    verificationFinishedAt: string;
+    resultExpiresAt: string;
+    resultFirstFetchedAt: string;
+    resultLastFetchedAt: string;
 
-    constructor(
-        captchaId: string,
-        verificationId: string,
-        score: number,
-        reason: string,
-        mode: string,
-        origin: string,
-        ipAddress: string,
-        deviceFamily: string,
-        operatingSystem: string,
-        browser: string,
-        creationTimestamp: string,
-        releaseTimestamp: string,
-        retrievalTimestamp: string,
-        verificationPassed: boolean
-    ) {
-        if (!uuidValidate(captchaId) || !uuidValidate(verificationId)) {
+    constructor(data: {
+        captchaId: string;
+        verificationId: string;
+        verificationPassed: boolean;
+        score: number;
+        decisionType: string;
+        decisionAction: string;
+        gatewayFailoverActive: boolean;
+        riskScoringEnabled: boolean;
+        minimalDataModeEnabled: boolean;
+        origin: string;
+        ipAddress: string;
+        countryCode: string;
+        deviceFamily: string;
+        operatingSystem: string;
+        browser: string;
+        verificationStartedAt: string;
+        verificationFinishedAt: string;
+        resultExpiresAt: string;
+        resultFirstFetchedAt: string;
+        resultLastFetchedAt: string;
+    }) {
+        if (!uuidValidate(data.captchaId) || !uuidValidate(data.verificationId)) {
             throw new Error('Invalid UUID');
         }
-        this.captchaId = captchaId;
-        this.verificationId = verificationId;
-        this.score = score;
-        this.reason = reason;
-        this.mode = mode;
-        this.origin = origin;
-        this.ipAddress = ipAddress;
-        this.deviceFamily = deviceFamily;
-        this.operatingSystem = operatingSystem;
-        this.browser = browser;
-        this.creationTimestamp = creationTimestamp;
-        this.releaseTimestamp = releaseTimestamp;
-        this.retrievalTimestamp = retrievalTimestamp;
-        this.verificationPassed = verificationPassed;
+        this.captchaId = data.captchaId;
+        this.verificationId = data.verificationId;
+        this.verificationPassed = data.verificationPassed;
+        this.score = data.score;
+        this.decisionType = data.decisionType;
+        this.decisionAction = data.decisionAction;
+        this.gatewayFailoverActive = data.gatewayFailoverActive;
+        this.riskScoringEnabled = data.riskScoringEnabled;
+        this.minimalDataModeEnabled = data.minimalDataModeEnabled;
+        this.origin = data.origin;
+        this.ipAddress = data.ipAddress;
+        this.countryCode = data.countryCode;
+        this.deviceFamily = data.deviceFamily;
+        this.operatingSystem = data.operatingSystem;
+        this.browser = data.browser;
+        this.verificationStartedAt = data.verificationStartedAt;
+        this.verificationFinishedAt = data.verificationFinishedAt;
+        this.resultExpiresAt = data.resultExpiresAt;
+        this.resultFirstFetchedAt = data.resultFirstFetchedAt;
+        this.resultLastFetchedAt = data.resultLastFetchedAt;
     }
 
     static fromObject(data: any): VerificationResult {
-        return new VerificationResult(
-            data.captchaId,
-            data.verificationId,
-            data.score,
-            data.reason,
-            data.mode,
-            data.origin,
-            data.ipAddress,
-            data.deviceFamily,
-            data.operatingSystem,
-            data.browser,
-            data.creationTimestamp,
-            data.releaseTimestamp,
-            data.retrievalTimestamp,
-            data.verificationPassed
-        );
+        return new VerificationResult(data);
     }
 }
