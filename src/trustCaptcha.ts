@@ -28,7 +28,7 @@ export class TrustCaptcha {
         if (!options || !options.apiKey) {
             throw new Error('apiKey must not be null or empty');
         }
-        this.apiKey = options.apiKey;
+        this.apiKey = options.apiKey.trim();
         this.apiHost = options.apiHost ?? DEFAULT_API_HOST;
         this.connectTimeoutMs = options.connectTimeoutMs ?? DEFAULT_CONNECT_TIMEOUT_MS;
         this.readTimeoutMs = options.readTimeoutMs ?? DEFAULT_READ_TIMEOUT_MS;
@@ -151,7 +151,7 @@ export abstract class FailoverException extends Error {
 }
 
 export class ServerUnreachableException extends FailoverException {
-    constructor(message: string = 'Could not reach the TrustCaptcha server. This is a high-trust failover signal — your backend was unable to contact our servers.') {
+    constructor(message: string = 'Could not reach the TrustCaptcha server. Please check your network connection and consider implementing a failover mechanism.') {
         super(message);
         this.name = 'ServerUnreachableException';
         Object.setPrototypeOf(this, ServerUnreachableException.prototype);
